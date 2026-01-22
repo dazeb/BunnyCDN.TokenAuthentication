@@ -25,7 +25,9 @@ function sign_bcdn_url($url, $securityKey, $expiration_time = 3600, $user_ip = N
 
 
 	$parameters = array();
-	parse_str($url_query, $parameters);
+	if (!empty($url_query)) {
+		parse_str($url_query, $parameters);
+	}
 
     // Check if the path is specified and ovewrite the default
     $signature_path = $url_path;
